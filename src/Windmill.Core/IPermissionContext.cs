@@ -5,8 +5,8 @@ namespace Windmill.Core
 {
     public interface IPermissionContext
     {
-        bool HasAccessTo(string permission);
-        bool HasAccessTo(IEnumerable<string> permissions);
+        bool Check(string permission);
+        bool Check(IEnumerable<string> permissions);
         AuthorizationRight RightsTo(string permission);
     }
 }

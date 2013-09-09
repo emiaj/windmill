@@ -20,12 +20,12 @@ namespace Windmill.Core
             _cache.OnMissing = rightsToCache;
         }
 
-        public bool HasAccessTo(string permission)
+        public bool Check(string permission)
         {
-            return HasAccessTo(new[] { permission });
+            return Check(new[] { permission });
         }
 
-        public bool HasAccessTo(IEnumerable<string> permissions)
+        public bool Check(IEnumerable<string> permissions)
         {
             if (permissions != null && permissions.Any())
             {

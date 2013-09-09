@@ -5,6 +5,7 @@ namespace Windmill.Core
     public interface IPermissionUrlService
     {
         string TemplateFor<TModel>(params string[] permissions) where TModel : class, new();
+        string TemplateFor(object model, params string[] permissions);
     }
 
     public class PermissionUrlService : IPermissionUrlService
@@ -20,7 +21,12 @@ namespace Windmill.Core
 
         public string TemplateFor<TModel>(params string[] permissions) where TModel : class, new()
         {
-            return _context.HasAccessTo(permissions) ? _registry.TemplateFor<TModel>() : null;
+            return _context.Check(permissions) ? _registry.TemplateFor<TModel>() : null;
+        }
+
+        public string TemplateFor(object model, params string[] permissions)
+        {
+            return _context.Check(permissions) ? _registry.TemplateFor(model) : null;
         }
     }
 }
