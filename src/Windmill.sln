@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windmill.Core", "Windmill.Core\Windmill.Core.csproj", "{C0D4BBAC-7079-4067-BF9F-0171488CEE7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windmill.Core.Tests", "Windmill.Core.Tests\Windmill.Core.Tests.csproj", "{EB3BB754-0305-4078-86E4-9327E5E8CA0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{C0D4BBAC-7079-4067-BF9F-0171488CEE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0D4BBAC-7079-4067-BF9F-0171488CEE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0D4BBAC-7079-4067-BF9F-0171488CEE7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB3BB754-0305-4078-86E4-9327E5E8CA0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB3BB754-0305-4078-86E4-9327E5E8CA0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB3BB754-0305-4078-86E4-9327E5E8CA0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB3BB754-0305-4078-86E4-9327E5E8CA0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
