@@ -1,6 +1,6 @@
 ﻿namespace Windmill.Core
 {
-    public interface IRoleProvider
+    public interface IRoleByUserProvider
     {
         string[] GetRolesForUser(string username);
     }

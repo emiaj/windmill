@@ -9,14 +9,14 @@ namespace Windmill.Core
     {
         private readonly IPermissionProviderCache _permissionProviderCache;
         private readonly ISecurityContext _securityContext;
-        private readonly IRoleProvider _roleProvider;
+        private readonly IRoleByUserProvider _roleByUserProvider;
         private readonly Cache<string, AuthorizationRight> _cache = new Cache<string, AuthorizationRight>();
         public PermissionContext(IPermissionProviderCache permissionProviderCache, ISecurityContext securityContext,
-                                 IRoleProvider roleProvider)
+                                 IRoleByUserProvider roleByUserProvider)
         {
             _permissionProviderCache = permissionProviderCache;
             _securityContext = securityContext;
-            _roleProvider = roleProvider;
+            _roleByUserProvider = roleByUserProvider;
             _cache.OnMissing = rightsToCache;
         }
 
@@ -44,7 +44,7 @@ namespace Windmill.Core
         private AuthorizationRight rightsToCache(string permission)
         {
             var username = _securityContext.CurrentIdentity.Name;
-            var roles = _roleProvider.GetRolesForUser(username);
+            var roles = _roleByUserProvider.GetRolesForUser(username);
             var rights = rightsTo(permission, username, roles);
             if (rights.Any(x => x == AuthorizationRight.Deny))
             {
