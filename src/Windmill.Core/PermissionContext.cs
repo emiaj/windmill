@@ -44,7 +44,7 @@ namespace Windmill.Core
         private AuthorizationRight rightsToCache(string permission)
         {
             var username = _securityContext.CurrentIdentity.Name;
-            var roles = _roleByUserProvider.GetRolesForUser(username);
+            var roles = _roleByUserProvider.Get(username);
             var rights = rightsTo(permission, username, roles);
             if (rights.Any(x => x == AuthorizationRight.Deny))
             {

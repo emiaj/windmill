@@ -11,7 +11,7 @@ namespace Windmill.Core
             _roleProvider = roleProvider;
         }
 
-        public string[] GetRolesForUser(string username)
+        public string[] Get(string username)
         {
             return _roleProvider.GetRolesForUser(username);
         }

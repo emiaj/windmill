@@ -2,6 +2,6 @@
 {
     public interface IRoleByUserProvider
     {
-        string[] GetRolesForUser(string username);
+        string[] Get(string username);
     }
 }
