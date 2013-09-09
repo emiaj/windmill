@@ -4,7 +4,7 @@ using FubuMVC.Core;
 
 namespace Windmill.Core
 {
-    public class SecurityExtension : IFubuRegistryExtension
+    public class WindmillExtension : IFubuRegistryExtension
     {
         public void Configure(FubuRegistry registry)
         {

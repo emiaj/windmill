@@ -90,7 +90,7 @@
     <Compile Include="PermissionRegistryCache.cs" />
     <Compile Include="PermissionUrlService.cs" />
     <Compile Include="RoleByUserProvider.cs" />
-    <Compile Include="SecurityExtension.cs" />
+    <Compile Include="WindmillExtension.cs" />
     <Compile Include="UI\SecurityPageExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
