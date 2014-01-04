@@ -10,14 +10,14 @@ namespace Windmill.Core
         private readonly IPermissionProviderCache _permissionProviderCache;
         private readonly ISecurityContext _securityContext;
         private readonly IRoleByUserProvider _roleByUserProvider;
-        private readonly Cache<string, AuthorizationRight> _cache = new Cache<string, AuthorizationRight>();
+        private readonly Cache<string, AuthorizationRight> _cache;
         public PermissionContext(IPermissionProviderCache permissionProviderCache, ISecurityContext securityContext,
                                  IRoleByUserProvider roleByUserProvider)
         {
             _permissionProviderCache = permissionProviderCache;
             _securityContext = securityContext;
             _roleByUserProvider = roleByUserProvider;
-            _cache.OnMissing = rightsToCache;
+            _cache = new Cache<string, AuthorizationRight>(rightsToCache);
         }
 
         public bool Check(string permission)
