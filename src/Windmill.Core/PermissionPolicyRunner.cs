@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Bottles;
 using Bottles.Diagnostics;
 
@@ -6,18 +7,18 @@ namespace Windmill.Core
 {
     public class PermissionPolicyRunner : IActivator
     {
-        private readonly IEnumerable<IPermissionPolicy> _policies;
+        private readonly IEnumerable<IPermissionSource> _sources;
         private readonly IPermissionRegistryCache _cache;
 
-        public PermissionPolicyRunner(IEnumerable<IPermissionPolicy> policies, IPermissionRegistryCache cache)
+        public PermissionPolicyRunner(IEnumerable<IPermissionSource> sources, IPermissionRegistryCache cache)
         {
-            _policies = policies;
+            _sources = sources;
             _cache = cache;
         }
 
         public void Activate(IEnumerable<IPackageInfo> packages, IPackageLog log)
         {
-            _policies.Each(x => x.Apply(_cache));
+            _sources.SelectMany(x => x.Permissions()).Each(_cache.Fill);
         }
     }
 }
