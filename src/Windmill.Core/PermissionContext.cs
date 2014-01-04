@@ -11,6 +11,7 @@ namespace Windmill.Core
         private readonly ISecurityContext _securityContext;
         private readonly IRoleByUserProvider _roleByUserProvider;
         private readonly Cache<string, AuthorizationRight> _cache;
+
         public PermissionContext(IPermissionProviderCache permissionProviderCache, ISecurityContext securityContext,
                                  IRoleByUserProvider roleByUserProvider)
         {
@@ -22,7 +23,7 @@ namespace Windmill.Core
 
         public bool Check(string permission)
         {
-            return Check(new[] { permission });
+            return Check(new[] {permission});
         }
 
         public bool Check(IEnumerable<string> permissions)
@@ -61,24 +62,42 @@ namespace Windmill.Core
 
         private static AuthorizationRight rightsTo(Permission permission, string user, string[] roles)
         {
-            if (permission.AllowedUsers.Contains(user))
-            {
-                 return AuthorizationRight.Allow;
-            }
             if (permission.ForbiddenUsers.Contains(user))
             {
-                 return AuthorizationRight.Deny;
+                return AuthorizationRight.Deny;
             }
-            if (roles.Any(role => permission.AllowedGroups.Any(allowed => role == allowed)))
+            if (permission.AllowedUsers.Contains(user))
             {
-                 return AuthorizationRight.Allow;
+                return AuthorizationRight.Allow;
             }
             if (roles.Any(role => permission.ForbiddenGroups.Any(forbidden => role == forbidden)))
             {
-                 return AuthorizationRight.Deny;
+                return AuthorizationRight.Deny;
             }
+            if (roles.Any(role => permission.AllowedGroups.Any(allowed => role == allowed)))
+            {
+                return AuthorizationRight.Allow;
+            }
+
+            if (permission.ForbiddenUsers.Contains("*"))
+            {
+                return AuthorizationRight.Deny;
+            }
+            if (permission.AllowedUsers.Contains("*"))
+            {
+                return AuthorizationRight.Allow;
+            }
+            if (permission.ForbiddenGroups.Contains("*"))
+            {
+                return AuthorizationRight.Deny;
+            }
+            if (permission.AllowedGroups.Contains("*"))
+            {
+                return AuthorizationRight.Allow;
+            }
+
             return AuthorizationRight.Allow;
-        } 
+        }
 
     }
 }
