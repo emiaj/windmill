@@ -18,6 +18,11 @@ namespace Windmill.Core
             _permissions[_permissions.FindLastIndex(e => e.Id == permission.Id)] = permission;
         }
 
+        public IEnumerable<Permission> List(IEnumerable<string> ids)
+        {
+            return ids.Select(FindOneById).Where(x => x != null);
+        }
+
         public IEnumerable<Permission> List(string id)
         {
             return _permissions.Where(x => x.Id == id || x.Id.StartsWith(id));

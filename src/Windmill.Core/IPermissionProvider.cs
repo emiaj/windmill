@@ -6,7 +6,7 @@ namespace Windmill.Core
     {
         void Insert(Permission permission);
         void Save(Permission permission);
-        IEnumerable<Permission> List(string id);
+        IEnumerable<Permission> List(IEnumerable<string> ids);
         Permission FindOneById(string id);
     }
 }

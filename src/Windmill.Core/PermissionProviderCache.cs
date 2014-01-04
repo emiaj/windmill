@@ -43,7 +43,7 @@ namespace Windmill.Core
         {
             var parts = id.Split('/');
             var keys = parts.Select((t, i) => parts.Take(i + 1).Join("/")).ToArray();
-            var permissions = _provider.List(id).ToDictionary(x => x.Id);
+            var permissions = _provider.List(keys).ToDictionary(x => x.Id);
             return keys.OrderBy(key => key)
                        .Select(key => permissions.ContainsKey(key) ? permissions[key] : insert(key))
                        .ToList();
