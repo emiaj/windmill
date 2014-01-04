@@ -63,7 +63,7 @@
     <Compile Include="Configuration\PermissionCheckerPolicy.cs" />
     <Compile Include="Configuration\PermissionToken.cs" />
     <Compile Include="InMemoryPermissionProvider.cs" />
-    <Compile Include="IPermissionConfigurerPolicy.cs" />
+    <Compile Include="IPermissionPolicy.cs" />
     <Compile Include="IPermissionContext.cs" />
     <Compile Include="IPermissionProvider.cs" />
     <Compile Include="IPermissionProviderCache.cs" />

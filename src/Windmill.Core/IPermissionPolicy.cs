@@ -1,6 +1,6 @@
 namespace Windmill.Core
 {
-    public interface IPermissionConfigurerPolicy
+    public interface IPermissionPolicy
     {
         void Apply(IPermissionRegistryCache cache);
     }

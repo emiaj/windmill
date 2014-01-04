@@ -6,10 +6,10 @@ namespace Windmill.Core
 {
     public class PermissionPolicyRunner : IActivator
     {
-        private readonly IEnumerable<IPermissionConfigurerPolicy> _policies;
+        private readonly IEnumerable<IPermissionPolicy> _policies;
         private readonly IPermissionRegistryCache _cache;
 
-        public PermissionPolicyRunner(IEnumerable<IPermissionConfigurerPolicy> policies, IPermissionRegistryCache cache)
+        public PermissionPolicyRunner(IEnumerable<IPermissionPolicy> policies, IPermissionRegistryCache cache)
         {
             _policies = policies;
             _cache = cache;
