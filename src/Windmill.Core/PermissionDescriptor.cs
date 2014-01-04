@@ -16,7 +16,7 @@ namespace Windmill.Core
         public PermissionDescriptor(string id)
         {
             if (id == null) throw new ArgumentNullException("id");
-            if (id.IsEmpty()) throw new ArgumentException("name cannot be empty", id);
+            if (id.IsEmpty()) throw new ArgumentException("id cannot be empty", id);
             Id = id;
             AllowedUsers = string.Empty;
             AllowedGroups = string.Empty;
