@@ -13,6 +13,7 @@ namespace Windmill.Core
             registry.Services(x => x.FillType<IActivator, PermissionPolicyRunner>());
             registry.Services(x => x.SetServiceIfNone<IPermissionUrlService, PermissionUrlService>());
             registry.Services(x => x.SetServiceIfNone<IPermissionProvider>(new InMemoryPermissionProvider()));
+            registry.Services(x => x.SetServiceIfNone<IRoleByUserProvider>(new NulloRoleByUserProvider()));
         }
     }
 }
