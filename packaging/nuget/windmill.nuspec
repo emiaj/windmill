@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Windmill</id>
+    <version>0.1.0</version>
+    <authors>Jaime Febres</authors>
+    <owners>Jaime Febres</owners>
+    <licenseUrl>https://raw.github.com/emiaj/windmill/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/emiaj/windmill</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FubuMVC Permissions Module</description>
+    <tags>fubu fubumvc security permissions windmill</tags>
+    <dependencies>
+      <dependency id="Bottles" />
+      <dependency id="FubuCore" />
+      <dependency id="FubuLocalization" />
+      <dependency id="FubuMVC.Core" />
+      <dependency id="FubuMVC.Core.View" />
+      <dependency id="HtmlTags"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\src\Windmill.Core\bin\release\Windmill.Core.*" target="lib\net40" />
+  </files>
+</package>
