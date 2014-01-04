@@ -41,7 +41,12 @@ namespace Windmill.Core
 
         private IEnumerable<Permission> getList(string id)
         {
-            return _provider.List(id);
+            var parts = id.Split('/');
+            var keys = parts.Select((t, i) => parts.Take(i + 1).Join("/")).ToArray();
+            var permissions = _provider.List(id).ToDictionary(x => x.Id);
+            return keys.OrderBy(key => key)
+                       .Select(key => permissions.ContainsKey(key) ? permissions[key] : insert(key))
+                       .ToList();
         }
 
         public IEnumerable<Permission> GetChildren(string id)
