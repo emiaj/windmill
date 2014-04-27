@@ -20,7 +20,7 @@ namespace Windmill.Core.Tests
             _model = new StubClass();
             _registry = MockFor<IUrlRegistry>();
             _context = MockFor<IPermissionContext>();
-            _permissions = new[] {"/product/delete", "/product/remove"};
+            _permissions = new[] { "/product/delete", "/product/remove" };
             _template1 = "/{bar}/{baz}";
             _template2 = "/{foo}/{bar}";
             _registry.Stub(x => x.TemplateFor<StubClass>()).Return(_template1);

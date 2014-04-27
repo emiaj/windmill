@@ -3,7 +3,6 @@ using FubuMVC.Core.Registration;
 
 namespace Windmill.Core.Configuration
 {
-    [Policy]
     public class ActionAccessCheckerConvention<THandler> : IConfigurationAction
     {
         private readonly string _actionName;
@@ -20,7 +19,7 @@ namespace Windmill.Core.Configuration
             var action = graph.ActionsForHandler<THandler>().ByName(_actionName);
             var permissionToken = new PermissionToken(_permissionId);
             var policy = action.ParentChain().Authorization.AddPolicy(typeof(PermissionCheckerPolicy));
-            action.Trace("Wrapping with security policy for permission:[" + _permissionId + "]");
+            //action.Trace("Wrapping with security policy for permission:[" + _permissionId + "]");
             policy.DependencyByValue(permissionToken);
         }
     }

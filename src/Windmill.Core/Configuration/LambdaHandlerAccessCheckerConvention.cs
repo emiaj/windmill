@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 
 namespace Windmill.Core.Configuration
 {
-    [Policy]
     public class LambdaHandlerAccessCheckerConvention : IConfigurationAction
     {
         private readonly Func<Type, bool> _predicate;
@@ -25,7 +23,7 @@ namespace Windmill.Core.Configuration
                 {
                     var permissionToken = new PermissionToken(_permissionId);
                     var policy = action.ParentChain().Authorization.AddPolicy(typeof(PermissionCheckerPolicy));
-                    action.ParentChain().Trace("Wrapping with security policy for permission:[" + _permissionId + "]");
+                    //action.ParentChain().Trace("Wrapping with security policy for permission:[" + _permissionId + "]");
                     policy.DependencyByValue(permissionToken);
                 });
         }
